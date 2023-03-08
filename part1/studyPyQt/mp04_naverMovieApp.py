@@ -5,7 +5,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
 from NaverApi import *
 import webbrowser # 웹브라우저 모듈
-
+from urllib.request import urlopen
 
 class qtApp(QWidget):
     count = 0   # 클릭횟수 카운트 변수
@@ -61,17 +61,37 @@ class qtApp(QWidget):
         self.tblResult.setColumnCount(7)    # 열 갯수 변경
         self.tblResult.setRowCount(len(items))  # 현재 행 100개 생성
         self.tblResult.setHorizontalHeaderLabels(['영화제목', '개봉링크', '감독', '배우진', '평점', '링크', '포스터'])
-        self.tblResult.setColumnWidth(0, 150)
-        self.tblResult.setColumnWidth(1, 260)
+        self.tblResult.setColumnWidth(0, 150)   # 영화제목
+        self.tblResult.setColumnWidth(1, 60)    # 개봉연도
+        self.tblResult.setColumnWidth(4, 50)    # 평점
         # 컬럼 데이터 수정 금지
         self.tblResult.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
         for i, post in enumerate(items): # 0, 영화 ...
             title = self.replaceHtmlTag(post['title'])  # HTML 특수문자 변환
+            pubDate = post['pubDate']
+            director = post['director']
+            actor = post['actor']
+            userRating = post['userRating']
             link = post['link']
+            # image = QImage(requests.get(post['image'], stream = True))
+            # imageUrl = urlopen(post['image']).read()
+            # image = QPixmap()
+            # image.loadFromData(imageUrl)
+            # imgLabel = QLabel()
+            # imgLabel.setPixmap(image)
+            # imgLabel.setGeometry(0, 0, 60,100)
+            # imgLabel(60,100)
+
             # setItem(행, 열, 넣을 데이터)
             self.tblResult.setItem(i, 0, QTableWidgetItem(title))
+            self.tblResult.setItem(i, 1, QTableWidgetItem(pubDate))
+            self.tblResult.setItem(i, 2, QTableWidgetItem(director))
+            self.tblResult.setItem(i, 3, QTableWidgetItem(actor))
+            self.tblResult.setItem(i, 4, QTableWidgetItem(userRating))
             self.tblResult.setItem(i, 5, QTableWidgetItem(link))
+            self.tblResult.selCellWidget(i, 6, imgLabel)
+            
     
     def replaceHtmlTag(self, sentence) -> str:
         result = sentence.replace('&lt;', '<')  # less than 작다
