@@ -13,7 +13,7 @@ class qtApp(QWidget):
         super().__init__()
         uic.loadUi('./studyPyQt/naverApiSearch.ui', self)
         self.setWindowIcon(QIcon('./studyPyQt/newspaper.png'))
-        
+
         # 검색 버튼 클릭시스널 / 슬롯함수
         self.btnSearch.clicked.connect(self.btenSearchClicked)
         # 검색어 입력후 엔터를 치면 처리
@@ -41,7 +41,6 @@ class qtApp(QWidget):
         else:
             api = NaverApi()    # NaverApi 클래스 객체 생성
             node = 'news'   # movie로 변경하면 영화검색
-            outputs = []    # 결과 담을 리스트 변수
             display = 100
 
             result = api.get_naver_search(node, search, 1, display)
