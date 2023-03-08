@@ -11,36 +11,40 @@ class qtApp(QWidget):
     count = 0   # 클릭횟수 카운트 변수
     def __init__(self):
         super().__init__()
-        uic.loadUi('./studyPyQt/naverApiSearch.ui', self)
+        uic.loadUi('./studyPyQt/naverApiMovie.ui', self)
         self.setWindowIcon(QIcon('./studyPyQt/newspaper.png'))
 
         # 검색 버튼 클릭시스널 / 슬롯함수
         self.btnSearch.clicked.connect(self.btenSearchClicked)
         # 검색어 입력후 엔터를 치면 처리
         self.txtSearch.returnPressed.connect(self.txtSearchClicked)
+        # 결과 주소 더블클릭하면 웹브라우저 오픈
         self.tblResult.doubleClicked.connect(self.tblResultDoubleClicked)
     
+    # 더블클릭 웹브라우저 오픈
     def tblResultDoubleClicked(self):
         # row = self.tblResult.currentIndex().row()
         # column = self.tblResult.currentIndex().column()
         # print(row,column)
         selected = self.tblResult.currentRow()
-        url = self.tblResult.item(selected, 1).text()
+        url = self.tblResult.item(selected, 5).text()   # 열 변경
         # print(url)
         webbrowser.open(url)
     
+    # 엔터치면 검색
     def txtSearchClicked(self):
         self.btenSearchClicked()
     
+    # 검색버튼 누르면 검색
     def btenSearchClicked(self):
         search = self.txtSearch.text()
 
         if search == '':
-            QMessageBox.warning(self,'경고', '검색어를 입력하세요!')
+            QMessageBox.warning(self,'영화명', '검색어를 입력하세요!')
             return
         else:
             api = NaverApi()    # NaverApi 클래스 객체 생성
-            node = 'news'   # movie로 변경하면 영화검색
+            node = 'movie'   # movie로 변경하면 영화검색
             display = 100
 
             result = api.get_naver_search(node, search, 1, display)
@@ -54,20 +58,20 @@ class qtApp(QWidget):
     # 테이블 위젯에 데이터 표시
     def makeTable(self, items) -> None:
         self.tblResult.setSelectionMode(QAbstractItemView.SingleSelection)   # 단일 선택
-        self.tblResult.setColumnCount(2)
+        self.tblResult.setColumnCount(7)    # 열 갯수 변경
         self.tblResult.setRowCount(len(items))  # 현재 행 100개 생성
-        self.tblResult.setHorizontalHeaderLabels(['기사제목', '뉴스링크'])
-        self.tblResult.setColumnWidth(0, 310)
+        self.tblResult.setHorizontalHeaderLabels(['영화제목', '개봉링크', '감독', '배우진', '평점', '링크', '포스터'])
+        self.tblResult.setColumnWidth(0, 150)
         self.tblResult.setColumnWidth(1, 260)
         # 컬럼 데이터 수정 금지
         self.tblResult.setEditTriggers(QAbstractItemView.NoEditTriggers)
 
-        for i, post in enumerate(items): # 0, 뉴스 ...
+        for i, post in enumerate(items): # 0, 영화 ...
             title = self.replaceHtmlTag(post['title'])  # HTML 특수문자 변환
-            originallink = post['originallink']
+            link = post['link']
             # setItem(행, 열, 넣을 데이터)
             self.tblResult.setItem(i, 0, QTableWidgetItem(title))
-            self.tblResult.setItem(i, 1, QTableWidgetItem(originallink))
+            self.tblResult.setItem(i, 5, QTableWidgetItem(link))
     
     def replaceHtmlTag(self, sentence) -> str:
         result = sentence.replace('&lt;', '<')  # less than 작다
