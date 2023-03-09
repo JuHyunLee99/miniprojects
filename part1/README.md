@@ -20,7 +20,7 @@
   - PyQt5 / Qt Designer
   - urllib.request 이미지 다운로드 사용 *
   
-<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/naver_moive.PNG" width="780" />
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/naver_movie.PNG" width="780" />
 
 ## DB연동 GUI 프로그램 학습
 
