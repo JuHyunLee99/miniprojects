@@ -28,6 +28,8 @@
   - MySQL 8.0 연동
   - pymysql 모듈 사용
   - PyQt5/ Qt Designer
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/addressbook1.png" width="780" />
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/addressbook2.png" width="780" />
 
 ## 미니프로젝트 실습
 
