@@ -23,6 +23,11 @@
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/naver_movie.PNG" width="780" />
 
 ## DB연동 GUI 프로그램 학습
+- 주소록 앱 만들기
+  - Python 3.11.2
+  - MySQL 8.0 연동
+  - pymysql 모듈 사용
+  - PyQt5/ Qt Designer
 
 ## 미니프로젝트 실습
 

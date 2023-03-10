@@ -14,15 +14,13 @@ class qtApp(QWidget):
         uic.loadUi('./studyPyQt/naverApiMovie.ui', self)
         self.setWindowIcon(QIcon('./studyPyQt/movie.png'))
 
-        # 검색 버튼 클릭시스널 / 슬롯함수
-        self.btnSearch.clicked.connect(self.btenSearchClicked)
-        # 검색어 입력후 엔터를 치면 처리
-        self.txtSearch.returnPressed.connect(self.txtSearchClicked)
-        # 결과 주소 더블클릭하면 웹브라우저 오픈
-        self.tblResult.doubleClicked.connect(self.tblResultDoubleClicked)
+        # 시스널 / 슬롯함수 지정
+        self.btnSearch.clicked.connect(self.btenSearchClicked)  # 검색버튼 클릭 시 검색 실행
+        self.txtSearch.returnPressed.connect(self.txtSearchClicked) # txt검색 엔터를 치면 검색 실행
+        self.tblResult.doubleClicked.connect(self.tblResultDoubleClicked)   # 결과 주소 더블클릭 시 웹브라우저 오픈 
     
-    # 더블클릭 웹브라우저 오픈
-    def tblResultDoubleClicked(self):
+    # 슬롯함수
+    def tblResultDoubleClicked(self):   # 더블클릭 웹브라우저 오픈
         # row = self.tblResult.currentIndex().row()
         # column = self.tblResult.currentIndex().column()
         # print(row,column)
@@ -31,12 +29,10 @@ class qtApp(QWidget):
         # print(url)
         webbrowser.open(url)
     
-    # 엔터치면 검색
-    def txtSearchClicked(self):
+    def txtSearchClicked(self): # 엔터치면 검색
         self.btenSearchClicked()
     
-    # 검색버튼 누르면 검색
-    def btenSearchClicked(self):
+    def btenSearchClicked(self):    # 검색버튼 누르면 검색
         search = self.txtSearch.text()
 
         if search == '':
@@ -55,16 +51,17 @@ class qtApp(QWidget):
             # print(itmes)  
             self.makeTable(itmes)   # 테이블위젯에 데이트들을 할당함수
 
+
     # 테이블 위젯에 데이터 표시
     def makeTable(self, items) -> None:
-        self.tblResult.setSelectionMode(QAbstractItemView.SingleSelection)   # 단일 선택
         self.tblResult.setColumnCount(7)    # 열 갯수 변경
         self.tblResult.setRowCount(len(items))  # 현재 행 100개 생성
-        self.tblResult.setHorizontalHeaderLabels(['영화제목', '개봉링크', '감독', '배우진', '평점', '링크', '포스터'])
+        self.tblResult.setSelectionMode(QAbstractItemView.SingleSelection)   # 단일 선택
+        self.tblResult.setEditTriggers(QAbstractItemView.NoEditTriggers)    # 컬럼수정금지
+        self.tblResult.setHorizontalHeaderLabels(['영화제목', '개봉링크', '감독', '배우진', '평점', '링크', '포스터'])  # 열제목
         self.tblResult.setColumnWidth(0, 150)   # 영화제목
         self.tblResult.setColumnWidth(1, 70)    # 개봉연도
         self.tblResult.setColumnWidth(4, 50)    # 평점
-        self.tblResult.setEditTriggers(QAbstractItemView.NoEditTriggers)    # 컬럼수정금지
         
         for i, post in enumerate(items): # 0, 영화 ...
             title = self.replaceHtmlTag(post['title'])  # HTML 특수문자 변환 / 영화제목 가져오기 추가
@@ -104,7 +101,7 @@ class qtApp(QWidget):
             else:
                 self.tblResult.setItem(i, 6, QTableWidgetItem('No Poster!'))
             
-    
+    # 문자열 특수문자 변환
     def replaceHtmlTag(self, sentence) -> str:
         result = sentence.replace('&lt;', '<')  # less than 작다
         result = result.replace('&gt;', '>')   # more than 크다
@@ -117,11 +114,8 @@ class qtApp(QWidget):
 
         return result
         
-
-
-
             
-
+# main
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = qtApp()
