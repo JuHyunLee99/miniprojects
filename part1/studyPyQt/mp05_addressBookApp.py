@@ -68,6 +68,8 @@ class qtApp(QMainWindow):
                 query = '''INSERT INTO addressbook (FullName, PhoneNum, Email, Address)
                             VALUES (%s, %s, %s, %s)'''
                 cur.execute(query, (fullName, phoneNum, email, address))
+                # 저장성공 메세지박스
+                QMessageBox.about(self, '성공', '저장 성공했습니다.')
             else:   # 수정 
                 # UPDATE 쿼리문
                 query = '''UPDATE addressbook
@@ -77,12 +79,13 @@ class qtApp(QMainWindow):
                                 , Address = %s
                             WHERE Idx = %s;'''  
                 cur.execute(query, (fullName, phoneNum, email, address, self.curIdx))
+                # 수정 성공 메세지박스
+                QMessageBox.about(self, '성공', '변경했습니다.')
 
             self.conn.commit()
             self.conn.close()
 
-            # 저장성공 메세지박스
-            QMessageBox.about(self, '성공', '저장 성공했습니다.')
+            
             # QTableWidget 새 데이터 출력 : 새로 DB 불러오기
             self.initDB()
             # 입력창 내용 초기화
