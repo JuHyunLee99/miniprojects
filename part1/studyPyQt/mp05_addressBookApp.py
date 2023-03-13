@@ -85,7 +85,7 @@ class qtApp(QMainWindow):
             self.conn.commit()
             self.conn.close()
 
-            
+
             # QTableWidget 새 데이터 출력 : 새로 DB 불러오기
             self.initDB()
             # 입력창 내용 초기화

@@ -28,8 +28,18 @@
   - MySQL 8.0 연동
   - pymysql 모듈 사용
   - PyQt5/ Qt Designer
+
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/addressbook1.png" width="780" />
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/addressbook2.png" width="780" />
+
+## 파이썬 관련 추가 학습
+- QR코드 생성 앱
+  - qrcode 모듈
+  - PyQt
+
+![QRCode생성앱]<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/qrcode.png" width="780" />
+![컴퓨터정보앱]<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/.png" width="780" />
+
 
 ## 미니프로젝트 실습
 
