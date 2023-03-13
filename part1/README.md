@@ -37,7 +37,7 @@
   - qrcode 모듈
   - PyQt
 
-<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/qrcodeApp.png" width="400" />
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/qrcodeApp.png" width="300" />
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/comInfoApp.png" width="780" />
 
 
