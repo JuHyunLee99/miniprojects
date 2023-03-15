@@ -40,7 +40,17 @@
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/qrcodeApp.png" width="300" />
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/comInfoApp.png" width="780" />
 
+- TTS(Text To Speech)
+  - gtts 모듈
+  - playsound 모듈
+  
+- 암호해제 앱
+  - itertools, zipfile 기본 모듈
 
+- 스레드 사용법
+  - GUI와 처리시간이 긴 로직을 실행하면 반드시 스레드 사용.
+
+- 이메일 보내기앱
 
 ## 미니프로젝트 실습
 

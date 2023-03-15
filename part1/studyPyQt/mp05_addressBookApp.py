@@ -191,4 +191,4 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = qtApp()
     ex.show()
-    sys.exit(app.exec_())
+    sys.exit(app.exec_())   # app.exec_(): 계속 반복 실행함.
