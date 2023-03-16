@@ -48,7 +48,8 @@
   - itertools, zipfile 기본 모듈
 
 - 스레드 사용법
-  - GUI와 처리시간이 긴 로직을 실행하면 반드시 스레드 사용.
+  - GUI와 처리시간이 긴 로직을 실행하면 반드시 스레드 사용. 
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/threadApp.png" width="780" />
 
 - 이메일 보내기앱
 
