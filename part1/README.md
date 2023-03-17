@@ -53,7 +53,9 @@
 
 - 이메일 보내기앱
 
-- PyGame
+- 게임만들기 -DinoRun
+  - PyGame
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/pygame1.png" width="780" />
 
 ## 미니프로젝트 실습
 - 프로젝트명
