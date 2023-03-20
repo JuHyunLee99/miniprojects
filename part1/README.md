@@ -59,6 +59,24 @@
 
 <img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/pygame1.png" width="780" />
 
+게임화면
+
+
+- 전국대학교 위치맵
+  - Pandas
+  - folium
+  - PyQt
+    - QWebEnginWiew 추가
+
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/folium_gui.png" width="780" />
+
+- 계산기 앱 만들기
+  - PyQt
+  - 16개 signal을 1개의 slot함수로 처리
+
+<img src="https://raw.githubusercontent.com/JuHyunLee99/miniprojects/main/images/calculator.png" width="250" />
+
+
 ## 미니프로젝트 실습
 - 프로젝트명
 
