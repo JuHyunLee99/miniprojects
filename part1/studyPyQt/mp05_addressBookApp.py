@@ -77,7 +77,7 @@ class qtApp(QMainWindow):
                                 , PhoneNum = %s
                                 , Email = %s
                                 , Address = %s
-                            WHERE Idx = %s;'''  
+                            WHERE Idx = %s'''  
                 cur.execute(query, (fullName, phoneNum, email, address, self.curIdx))
                 # 수정 성공 메세지박스
                 QMessageBox.about(self, '성공', '변경했습니다.')
