@@ -23,7 +23,7 @@ namespace SmartHomeMonitoringApp.Views
 
         //MQTT Subscribition text 과도 문제 속도 저하를 잡기위해 변수
         // 23.05.11 09:30
-        int MaxCount = 10;
+        int MaxCount { get; set; } = 10;
 
         public DataBaseControl()
         {
@@ -45,7 +45,7 @@ namespace SmartHomeMonitoringApp.Views
             if(Commons.MQTT_CLIENT != null && Commons.MQTT_CLIENT.IsConnected)
             {
                 IsConnected = true;
-                BtnConnDb.Content = "Connect";
+                BtnConnDb.Content = "MQTT 연결중";
                 BtnConnDb.IsChecked = true;
                 Commons.MQTT_CLIENT.MqttMsgPublishReceived += MQTT_CLIENT_MqttMsgPublishReceived;
             }

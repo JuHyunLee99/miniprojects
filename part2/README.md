@@ -20,6 +20,15 @@
 	- LiveCharts 대용량 데이터 차트는 무리(LiveCharts v.2 동일)
 		- 대용량 차트는 OxyChart로 변경
 		- [github oxyplt](https://github.com/oxyplot/oxyplot/tree/develop/Source/Examples/WPF) 참고
+		
+온습도 더미데이터 시뮬레이터
+<img src="" width="780/>
+
+스마트홈 모니터링 앱
+<img src="" width="780/>
+
+스마트홈 모니터링 시각화
+<img src="" width="780/>
 
 
 	
