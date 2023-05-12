@@ -21,14 +21,14 @@
 		- 대용량 차트는 OxyChart로 변경
 		- [깃허브 oxyplt](https://github.com/oxyplot/oxyplot/tree/develop/Source/Examples/WPF) 참고
 		
-온습도 더미데이터 시뮬레이터
-<img src="https://github.com/JuHyunLee99/miniprojects/blob/main/images/smarthome_monitor1.gif" width="780/>
+온습도 더미데이터 시뮬레이터  
+<img src="https://github.com/JuHyunLee99/miniprojects/blob/main/images/smarthome_monitor1.gif" width="780"/>
 
-스마트홈 모니터링 앱
-<img src="https://github.com/JuHyunLee99/miniprojects/blob/main/images/smarthome_monitor2.gif" width="780/>
+스마트홈 모니터링 앱  
+<img src="https://github.com/JuHyunLee99/miniprojects/blob/main/images/smarthome_monitor2.gif" width="780"/>
 
-스마트홈 모니터링 시각화
-<img src="https://github.com/JuHyunLee99/miniprojects/blob/main/images/smarthome_monitor3.png" width="780/>
+스마트홈 모니터링 시각화  
+<img src="https://github.com/JuHyunLee99/miniprojects/blob/main/images/smarthome_monitor3.png" width="780"/>
 
 
 	
