@@ -1,6 +1,6 @@
 ﻿using Google.Protobuf.WellKnownTypes;
-using LiveCharts;
-using LiveCharts.Wpf;
+using OxyPlot;
+using OxyPlot.Series;
 using MahApps.Metro.Controls;
 using MySql.Data.MySqlClient;
 using SmartHomeMonitoringApp.Logics;
@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OxyPlot.Legends;
 
 namespace SmartHomeMonitoringApp.Views
 {
@@ -136,7 +137,7 @@ namespace SmartHomeMonitoringApp.Views
 
                     adapter.Fill(ds, "smarthomesensor");
 
-                    MessageBox.Show("TotalData", ds.Tables["smarthomesensor"].Rows.Count.ToString());
+                    // MessageBox.Show("TotalData", ds.Tables["smarthomesensor"].Rows.Count.ToString());
             }
             }
             catch (Exception ex)
@@ -145,16 +146,51 @@ namespace SmartHomeMonitoringApp.Views
                 await Commons.ShowCustomMessageAsync("DB검색", $"DB검색 오류 {ex.Message}");
             }
 
+            // Create the plot model
+            var tmp = new PlotModel { Title = $"{CboRoomName.SelectedValue} ROOM"};
+            var legend = new Legend         // 범주
+            {
+                LegendBorder = OxyColors.DarkGray,  // 범주 박스 테두리 색상
+                LegendBackground = OxyColor.FromArgb(150, 255, 255, 255),   // 범주 박스 백그라운드 색상
+                LegendPosition = LegendPosition.TopRight,
+                LegendPlacement = LegendPlacement.Outside,
+            };
+            tmp.Legends.Add(legend);
+
+            // Create two line series (markers are hidden by default)
+            var tempSeries = new LineSeries 
+            { 
+                Title = "Temperature(℃)",
+                MarkerType = MarkerType.Circle,
+                Color= OxyColors.DarkOrange // 라인색상 온도 주황색
+            };
+            var humidSeries = new LineSeries 
+            { 
+                Title = "Humidity(%)",
+                MarkerType = MarkerType.Square,
+                Color = OxyColors.Aqua, // 라인색상 습도 아쿠아
+            };
+
             // DB에서 가져온 데이터 차트에 뿌리도록 처리
             if (ds.Tables[0].Rows.Count > 0)
             {
-                // MessageBox.Show("데이터 출력 가능!!");
+                TotalDataCount = ds.Tables[0].Rows.Count;
 
+                var count = 0;
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
-                    Convert.ToDouble(row["Temp"]);
+                        // Convert.ToDouble(row["Temp"]);
+                    tempSeries.Points.Add(new DataPoint(count++, Convert.ToDouble(row["Temp"])));
+                    humidSeries.Points.Add(new DataPoint(count++, Convert.ToDouble(row["Humid"])));
                 }
+
+                // Add the series to the plot model
+                tmp.Series.Add(tempSeries);
+                tmp.Series.Add(humidSeries);
             }
+            OpvSmartHome.Model = tmp;
+
+            LblTotalCount.Content = $"검색데이터 {TotalDataCount}개";
         }
     }
 }
