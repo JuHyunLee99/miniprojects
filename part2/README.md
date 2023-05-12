@@ -15,11 +15,11 @@
 - SmartHome시스템 문제점
 	- 실행 후 시간이 소요되면 UI제어가 느려짐	- 해결
 		- TextBox에 텍스트가 과도
-	- MaxCount변수로 TextBox Clear 
+		- MaxCount변수로 TextBox Clear 
 	
 	- LiveCharts 대용량 데이터 차트는 무리(LiveCharts v.2 동일)
-	- 대용량 차트는 OxyChart로 변경
-	- [github oxyplt](https://github.com/oxyplot/oxyplot/tree/develop/Source/Examples/WPF) 참고
+		- 대용량 차트는 OxyChart로 변경
+		- [github oxyplt](https://github.com/oxyplot/oxyplot/tree/develop/Source/Examples/WPF) 참고
 
 
 	
