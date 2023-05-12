@@ -19,7 +19,7 @@
 	
 	- LiveCharts 대용량 데이터 차트는 무리(LiveCharts v.2 동일)
 	- 대용량 차트는 OxyChart로 변경
-	[github oxyplt](https://github.com/oxyplot/oxyplot/tree/develop/Source/Examples/WPF) 
+	- [github oxyplt](https://github.com/oxyplot/oxyplot/tree/develop/Source/Examples/WPF) 참고
 
 
 	
